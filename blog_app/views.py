@@ -1,6 +1,11 @@
 from django.shortcuts import render
+from .models import Category
 
 
 # Create your views here.
 def blog(request):
-    return render(request, 'blog.html')
+    categories = Category.objects.all()
+    context = {
+        'categories': categories,
+    }
+    return render(request, 'blog.html', context)
